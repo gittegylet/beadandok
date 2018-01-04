@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="postrokker"/>
+    <meta name="copyright" content="postrokker"/>
+    <meta name="keywords" content="post-rock post rock poszt-rock zenekarok poszt rock zenék wiki"/>
+    <meta name="description" content="Magyar post-rock, post rock zenei műfaj, poszt-rock zenekarok, külföldi poszt rock bandák, a posztrock zene wiki oldala."/>
+    <title>Poszt-rock - Zenekarok</title>
+    <!---<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&subset=latin,latin-ext" rel="stylesheet">--->
+
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css"/>
+
+    <script src="ToggleMenu.js" type="text/javascript"></script>
+    <script src="myModal.js" type="text/javascript"></script>
+    <script src="lightBox.js" type="text/javascript"></script>
+
+
+
+
+</head>
+<body onload="setPageMenu(); linkPaste();" class="rocktheme">
+
+<div class="menusor">
+
+    <div class="top_menu" id="myTopmenu">
+        <a href="wiki.html" class="menu">Wiki</a>
+        <a href="zenekarok.html" class="menu">Zenekarok</a>
+        <a href="kommentek.html" class="menu">Kommentek</a>
+        <a href="kapocs.html" class="menu">Kapcsolat</a>
+        <a href="javascript:void(0);" class="menu icon" onclick="ToggleMenu()">&#9776;</a>
+    </div>
+
+</div>
+
+<div class="pagezone2">
+
+    <div class="header">
+
+
+        <p class="h1"><b>P</b>oszt-rock</p>
+        <p class="h3">Zenekarok</p>
+    </div>
+
+
+
+        <div class="block2 block_">
+
+            <p class="bevezeto">
+                A poszt-rock műfajban, vagy ahhoz közelálló zenei stílusokban ma már bőven találhatunk kiváló magyar és külföldi előadókat. Csak a teljesség igénye nélkül néhány ezen zenekarok közül...
+            </p>
+            <br>
+
+            <p class="leiras">
+                Magyar csapatok:<br>
+                Deley, Sonar, Colorstar (vagy a régiek közül pl. Másfél, Peet, Esclin Syndo, stb.)
+            </p>
+
+            <p class="leiras">
+                Külföldiek:<br>
+                Tuber (GR), PAUS (P), Peixe:Avião (P), Galgo (P), Ghost Hunt (P), ...
+            </p>
+
+
+
+        </div>
+
+
+
+
+
+    <audio dal="Deley-Western-Digital" class="zenek" src="songs/Deley - Western Digital.mp3"></audio>
+    <audio dal="Deley-Western-Digital" class="zenek" src="songs/MantraPorno_Wow_Baby.mp3"></audio>
+    <audio dal="Deley-Western-Digital" class="zenek" src="songs/MantraPorno_Tiny_Pink_Roses.mp3"></audio>
+    <audio dal="Deley-Western-Digital" class="zenek" src="songs/Korai_Öröm_Deltoid.mp3"></audio>
+    <audio dal="Deley-Western-Digital" class="zenek" src="songs/Korai Orom - Tizenketto negyed.mp3"></audio>
+    <audio dal="Deley-Western-Digital" class="zenek" src="songs/Hiperkarma_-_Amondo.mp3"></audio>
+
+
+
+    <div class="imgBlock" title="Deley"><img src="pics/Deley/Deley_band.jpg" class="align-left slide-in" onclick="popUnder('https://deley.bandcamp.com');"></div>
+    <div class="imgBlock" title="Ghost Hunt"><img src="pics/Ghost_Hunt_P/Ghost_Hunt.jpg" class="align-right slide-in" onclick="popUnder('https://www.youtube.com/channel/UCMYUHW1lp2LdxOad7FFaOOA');"></div>
+    <div class="imgBlock" title="PAUS"><img src="pics/PAUS_P/PAUS.jpg" class="align-left slide-in" onclick="popUnder('https://www.youtube.com/user/PausMusicVEVO/');"></div>
+    <div class="imgBlock" title="Peet"><img src="pics/Tuber_GR/Peet_zenekar.jpg" class="align-right slide-in" onclick="popUnder('http://passzio.hu/modules.php?name=News&file=article&sid=9963');"></div>
+    <div class="imgBlock" title="Tuber"><img src="pics/Tuber_GR/Tuber_Smoked_Up_Notes.jpg" class="align-left slide-in" onclick="popUnder('https://tuber.bandcamp.com');"></div>
+    <div class="imgBlock" title="Peixe : Avião"><img src="pics/peixe_aviao/peixe1.jpeg" class="align-right slide-in" onclick="popUnder('https://www.youtube.com/channel/UCWr2NhxABC0JuSwyjY5fyqA');"></div>
+
+
+
+
+
+</div>
+
+
+
+
+<script>
+
+
+    //  Képek beúsztatása:
+
+    function debounce(func, wait = 40, immediate = true) {
+        var timeout;
+        return function() {
+            var context = this, args = arguments;
+            var later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    }
+
+
+    function debounce_(func, wait = 100, immediate = true) {
+        var timeout;
+        return function() {
+            var context = this, args = arguments;
+            var later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    }
+
+    function waiting(){ return; }
+
+
+    const sliderImages = document.querySelectorAll('.slide-in');
+    const dalok = document.querySelectorAll('.zenek');
+
+
+    function checkSlide(e) {
+
+        var index = 0;
+        sliderImages.forEach(slideImage => {
+
+            const slideInAt = (window.scrollY + window.innerHeight) - (slideImage.height / 2);
+            const imageBottom = slideImage.offsetTop + slideImage.height;
+
+            const isHalfShown = slideInAt > slideImage.offsetTop;
+            const isNotScrolledPast = window.scrollY < imageBottom;
+
+
+            if (isHalfShown && isNotScrolledPast){
+
+                slideImage.classList.add('active');
+                if (dalok[index].paused) { dalok[index].play(); }
+                //console.log(dalok.length, dalok[index]);
+
+            }
+            else {
+
+                slideImage.classList.remove('active');
+                if (!dalok[index].paused) { dalok[index].pause(); }
+                //console.log(dalok.length, dalok[index]);
+
+            }
+
+
+            index++;
+
+
+        });
+
+        //debounce_(waiting);
+
+
+    }
+
+    window.addEventListener('scroll', debounce(checkSlide));
+
+
+
+
+
+
+    var pageMenu = document.querySelectorAll('div.top_menu a.menu');
+
+    //console.log(clicked);
+
+    var path = window.location.pathname.split('/');
+    var pageName = path[path.length - 1];
+
+    function setPageMenu() {
+
+        pageMenu.forEach(menu => { if (menu.getAttribute('href').includes(pageName)) menu.classList.add('active'); });
+
+    }
+
+
+
+    var bands = ['Deley', 'Sonar', 'Colorstar', 'Másfél', 'Peet', 'Esclin Syndo'];
+    var bandLinks = ['https://deley.bandcamp.com',
+        'http://www.sonarmusic.hu',
+        'http://www.colorstar.hu',
+        'https://masfel.bandcamp.com',
+        'http://passzio.hu/modules.php?name=News&file=article&sid=9963',
+        'https://zene.hu/20090129_kultzenekar_szuletik__meghallgattuk_az_esclin_syndo_elso_albumat_'];
+
+    var bandPics = ['pics/Deley/Deley_band.jpg',
+        'pics/Sonar/Sonar_2.jpg',
+        'pics/Colorstar/Colorstar_2.jpg',
+        'pics/Másfél/Másfél_3.jpg',
+        'pics/Peet/PEET_2.jpg',
+        'pics/Esclin Syndo/Esclin_3.jpg'];
+
+
+    var bands2 = ['Tuber', 'PAUS', 'Peixe:Avião', 'Galgo', 'Ghost Hunt'];
+    var bandLinks2 = ['https://tuber.bandcamp.com',
+        'https://www.youtube.com/user/PausMusicVEVO/',
+        'https://www.youtube.com/channel/UCWr2NhxABC0JuSwyjY5fyqA',
+        'https://galgogalgogalgo.bandcamp.com',
+        'https://www.youtube.com/channel/UCMYUHW1lp2LdxOad7FFaOOA'];
+
+    var bandPics2 = ['pics/Deley/Deley_band.jpg',
+        'pics/PAUS/PAUS_2.jpg',
+        'pics/Peixe_Avião/Peixe_2.jpg',
+        'pics/Galgo/Galgo_3.jpg',
+        'pics/Ghost_Hunt/GhostHunt_band.jpg\','];
+
+
+    function linkPaste() {
+
+        linkeles(bands, bandLinks, bandPics);
+        linkeles(bands2, bandLinks2, bandPics2);
+
+    }
+
+
+    function linkeles(bands, blinks, bpics) {
+
+        var html = document.querySelectorAll('p');
+
+        html.forEach(p => { var newHtml = p.innerHTML; bands.forEach(bandName => {
+
+            //if (newHtml.includes(bandName)) newHtml = newHtml.replace(bandName, `<a href="${blinks[bands.indexOf(bandName)]}" target="_blank" onclick="window.open('${bpics[bands.indexOf(bandName)]}', 'popup', 'height=360'); return false;">${bandName}</a>`);
+            if (newHtml.includes(bandName)) newHtml = newHtml.replace(bandName, `<a href="${blinks[bands.indexOf(bandName)]}" target="_blank" onclick="return popUnder(this);">${bandName}</a>`);
+
+
+
+
+        }); p.innerHTML = newHtml; });
+
+
+    }
+
+
+    // Link megnyitása "átváltás" nélkül...
+
+    function popUnder(node) {
+        var newWindow;
+
+        //console.log('->>', node.toString().slice(0, 5));
+
+        if (node.toString().slice(0, 5) != "https" && node.toString().slice(0, 5) != "http:") newWindow = window.open("about:blank", node.target, "width=700,height=600");
+        else newWindow = window.open("about:blank", node.toString(), "width=700,height=600");
+
+        newWindow.blur();
+        window.focus();
+        if (node.toString().slice(0, 5) != "https" && node.toString().slice(0, 5) != "http:") newWindow.location.href = node.href;
+        else newWindow.location.href = node.toString();
+
+        return false;
+    }
+
+    /* Toggle between a dding and removing the "responsive" class to topnav when the user clicks on the icon */
+
+</script>
+
+
+
+
+
+</body>
+</html>
