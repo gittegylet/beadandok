@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
@@ -12,60 +12,132 @@
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet"/>
     <link rel="stylesheet" href="style.css"/>
 
+    <script src="ToggleMenu.js" type="text/javascript"></script>
+    <script src="myModal.js" type="text/javascript"></script>
+    <script src="lightBox.js" type="text/javascript"></script>
 
 
 
 </head>
-<body>
+<body onload="setPageMenu(); linkPaste();" class="style1">
 
-<div class="topnav" id="myTopnav">
-    <a href="#home" class="active">Home</a>
-    <a href="#news">News</a>
-    <a href="#contact">Contact</a>
-    <a href="#about">About</a>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
-</div>
+<div class="menusor">
 
-
-<div class="header">
-
-
-            <h1>Poszt-rock</h1>
-            <h3>WiKi</h3>
- </div>
-
-<div class="block">
-        </p>
-            <p id="p2">
-                A posztrock (angolul post-rock) műfajt az alternatív rockzene körébe sorolják hangszerelése miatt, mert ez többnyire a gitárok, basszusgitár és dob összetételből állnak. Pedig a hangszerelésen kívül nem sok köze van a hagyományos rockhoz, mert e stílus témái különleges ritmusokat, harmóniákat, melódiákat, változatos hangszíneket és akkordmeneteket tartalmaznak, amik többnyire a rockzenéből hiányoznak. Igazából rock hangszerelésű komoly- és könnyűzene keveréke.
-
-            </p>
-            <br>
-        <p id="p3">Ez a műfaj nagyon sok más stílust ötvöz magában, ide tartoznak az ambient, jazz, elektronikus (easy listening), experimentál, stb. A stílusra még jellemző, hogy a hangszereket nem hagyományos módon (például néha a gitárt nem pengetővel, hanem vonóval) szólaltatják meg, továbbá a dobok nyers és erőteljes jelenléte, melyek még intenzívebbé teszik a zenét. A számok felépítésében nincsenek különösebb koncepciók, mint a rockban és a popban, néha erőteljes már-már metálos riff-ek (post-metal) után hirtelen néhány perces melankólikus-ambientbe forduló, vagy hirtelen megjelenő zajokat hallhatunk. A post-rock elnevezést 1994-ben használták először a Bark Psychosis nevű zenekar lemezére.</p>
-
-
-        </p>
-
+    <div class="top_menu" id="myTopmenu">
+        <a href="wiki.html" class="menu">Wiki</a>
+        <a href="zenekarok.html" class="menu">Zenekarok</a>
+        <a href="kommentek.html" class="menu">Kommentek</a>
+        <a href="kapocs.html" class="menu">Kapcsolat</a>
+        <a href="javascript:void(0);" class="menu icon" onclick="ToggleMenu()">&#9776;</a>
+    </div>
 
 </div>
 
+<div class="pagezone">
 
- </div>
+    <div class="header">
+
+
+        <p class="h1"><b>P</b>oszt-rock</p>
+        <p class="h3">WiKi</p>
+    </div>
+
+    <div class="block">
+
+        <p class="bevezeto">
+            A posztrock (angolul post-rock) műfajt az alternatív rockzene körébe sorolják hangszerelése miatt, mert ez többnyire a gitárok, basszusgitár és dob összetételből állnak. Pedig a hangszerelésen kívül nem sok köze van a hagyományos rockhoz, mert e stílus témái különleges ritmusokat, harmóniákat, melódiákat, változatos hangszíneket és akkordmeneteket tartalmaznak, amik többnyire a rockzenéből hiányoznak. Igazából rock hangszerelésű komoly- és könnyűzene keveréke.
+        </p>
+        <br>
+
+        <p class="leiras">
+            Ez a műfaj nagyon sok más stílust ötvöz magában, ide tartoznak az ambient, jazz, elektronikus (easy listening), experimentál, stb. A stílusra még jellemző, hogy a hangszereket nem hagyományos módon (például néha a gitárt nem pengetővel, hanem vonóval) szólaltatják meg, továbbá a dobok nyers és erőteljes jelenléte, melyek még intenzívebbé teszik a zenét. A számok felépítésében nincsenek különösebb koncepciók, mint a rockban és a popban, néha erőteljes már-már metálos riff-ek (post-metal) után hirtelen néhány perces melankólikus-ambientbe forduló, vagy hirtelen megjelenő zajokat hallhatunk. A post-rock elnevezést 1994-ben használták először a Bark Psychosis nevű zenekar lemezére.
+        </p>
+
+
+
+
+
+    </div>
+
+</div>
+
 
 
 <script>
 
 
-    /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
-    function myFunction() {
-        var x = document.getElementById("myTopnav");
-        if (x.className === "topnav") {
-            x.className += " responsive";
-        } else {
-            x.className = "topnav";
-        }
+    var pageMenu = document.querySelectorAll('div.top_menu a.menu');
+
+    var path = window.location.pathname.split('/');
+    var pageName = path[path.length - 1];
+
+
+    function setPageMenu() {
+
+        pageMenu.forEach(menu => { if (menu.getAttribute('href').includes(pageName)) menu.classList.add('active'); });
+
     }
 
+
+
+
+    var bands = ['Deley', 'Sonar', 'Colorstar', 'Másfél', 'Peet', 'Esclin Syndo'];
+    var bandLinks = ['https://deley.bandcamp.com',
+        'http://www.sonarmusic.hu',
+        'http://www.colorstar.hu',
+        'https://masfel.bandcamp.com',
+        'http://passzio.hu/modules.php?name=News&file=article&sid=9963',
+        'https://zene.hu/20090129_kultzenekar_szuletik__meghallgattuk_az_esclin_syndo_elso_albumat_'];
+
+    var bandPics = ['pics/Deley/Deley_band.jpg',
+        'pics/Sonar/Sonar_2.jpg',
+        'pics/Colorstar/Colorstar_2.jpg',
+        'pics/Másfél/Másfél_3.jpg',
+        'pics/Peet/PEET_2.jpg',
+        'pics/Esclin Syndo/Esclin_3.jpg'];
+
+    var bands2 = ['Tuber', 'PAUS', 'Peixe:Avião', 'Galgo', 'Ghost Hunt'];
+    var bandLinks2 = ['https://tuber.bandcamp.com',
+        'https://www.youtube.com/watch?v=GjWkMoGXR7M',
+        'https://www.youtube.com/watch?v=aEqoJcyPt8s',
+        'https://www.youtube.com/watch?v=B3rDKXIsBCA',
+        'https://www.youtube.com/watch?v=ubSLCMCOAiA'];
+
+    var bandPics2 = ['pics/Tuber/Deley_band.jpg',
+        'pics/PAUS/PAUS_2.jpg',
+        'pics/Peixe_Avião/Peixe_2.jpg',
+        'pics/Galgo/Galgo_3.jpg',
+        'pics/Ghost_Hunt/GhostHunt_band.jpg\','];
+
+
+    function linkPaste() {
+
+        linkeles(bands, bandLinks, bandPics);
+        linkeles(bands2, bandLinks2, bandPics2);
+
+    }
+
+
+    function linkeles(bands, blinks, bpics) {
+
+        var html = document.querySelectorAll('p');
+
+        html.forEach(p => { var newHtml = p.innerHTML; bands.forEach(bandName => {
+
+            if (newHtml.includes(bandName)) newHtml = newHtml.replace(bandName, `<a href="${blinks[bands.indexOf(bandName)]}" target="_blank" onclick="window.open('${bpics[bands.indexOf(bandName)]}', 'popup', 'height=360'); return false;">${bandName}</a>`);
+
+
+
+        }); p.innerHTML = newHtml; });
+
+
+    }
+
+
+
+
+
+    /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 
 </script>
 
